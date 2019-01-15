@@ -1,0 +1,16 @@
+<view class="container">
+  <!-- View -->
+  <view class="uploader">
+    <navigator url="../view/index" open-type="navigate" class="uploader-text">
+      <text>View</text>
+    </navigator>
+  </view>
+
+  <!-- ScrollView -->
+  <view class="uploader">
+    <navigator url="../scrollView/index" open-type="navigate" class="uploader-text">
+      <text>ScrollView</text>
+    </navigator>
+  </view>
+
+</view>

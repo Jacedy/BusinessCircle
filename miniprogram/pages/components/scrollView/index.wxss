@@ -1,0 +1,19 @@
+/* @import "../../../style/guide.wxss"; */
+@import "../../../lib/weui.wxss";
+
+.scroll-view-item {display: flex;}
+.bc_green {background: green;width:100%; height: 200px;}
+.bc_red {background: red;width:100%; height: 200px;}
+.bc_blue {background: blue;width:100%; height: 200px;}
+.bc_yellow {background: yellow;width:100%; height: 200px;}
+
+.scroll-view_H{
+  white-space: nowrap;
+  display:flex;
+}
+.scroll-view-item_H{
+  flex-shrink:0;
+  flex-grow:0;
+  width: 100px;
+  height: 200px;
+}

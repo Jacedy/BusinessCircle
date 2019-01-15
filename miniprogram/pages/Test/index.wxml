@@ -1,0 +1,64 @@
+<view class="container">
+
+  <view>hello</view>
+
+  <!-- for -->
+  <view wx:for="{{array}}">{{item}}</view>
+  <!-- index、item重命名 -->
+  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+    {{idx}}: {{itemName.message}}
+  </view>
+  <!-- 将 wx:for 用在<block/>标签上，以渲染一个包含多节点的结构块 -->
+  <block wx:for="{{[1, 2, 3]}}">
+    <view>{{index}}:</view>
+    <view>{{item}}</view>
+  </block>
+
+  <!-- if-else -->
+  <view wx:if="{{view == 'WEBVIEW'}}">WEBVIEW</view>
+  <view wx:elif="{{view == 'APP'}}">APP</view>
+  <view wx:else="{{view == 'MINA'}}">MINA</view>
+
+  <!-- bool -->
+  <checkbox checked='{{flag ? true : false}}'></checkbox>
+
+  <!-- template -->
+  <template name="msgItem">
+    <view>
+      <text>{{index}}: {{msg}}</text>
+      <text>Time: {{time}}</text>
+    </view>
+  </template>
+  <template is="msgItem" data="{{...item}}" />
+
+  <!-- 事件 -->
+  <view bindtap="add">{{count}}</view>
+  <!-- 事件附带数据 -->
+  <!-- 以data-开头，多个单词由连字符-链接，不能有大写(大写会自动转成小写)，字符转成驼峰elementType -->
+  <view id="tapTest" data-hi="WeChat" bindtap="tapName">Click me!</view>
+  <!-- bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以阻止冒泡事件向上冒泡 -->
+  <view id="outer" bindtap="handleTap1">
+    outer view
+    <view id="middle" catchtap="handleTap2">
+      middle view
+      <view id="inner" bindtap="handleTap3">inner view</view>
+    </view>
+  </view>
+
+  <!-- import 有作用域的概念，即只会 import 目标文件中定义的 template，而不会 import 目标文件 import 的 template。 -->
+  <!-- include 可以将目标文件除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置 -->
+
+  <!-- 静态的样式统一写到 class 中。style 接收动态的样式，在运行时会进行解析，请尽量避免将静态的样式写进 style 中，以免影响渲染速度。 -->
+
+  <!-- WXS 文件 -->
+  <!-- <wxs src="./../tools.wxs" module="tools" />
+<view>{{tools.msg}}</view>
+<view>{{tools.bar(tools.FOO)}}</view> -->
+
+  <wxs module="m1">
+    var msg = "hello world";
+    module.exports.message = msg;
+  </wxs>
+  <view>{{m1.message}}</view>
+
+</view>
